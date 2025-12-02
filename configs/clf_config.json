@@ -1,0 +1,12 @@
+{
+  "models": ["efficientnet_b0", "efficientnet_b1", "efficientnet_b2", "efficientnet_b3"],
+  "batch_size": 64,
+  "epochs": 20,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "seed": 42,
+  "img_size": 224,
+  "train_dir": "cls_crops_v2/train",
+  "val_dir": "cls_crops_v2/valid",
+  "save_dir": "cls_runs_v2_efficientnet"
+}
