@@ -86,4 +86,3 @@ DriverDistractionDetection/
 
 - 모든 코드에서 데이터 경로는 `configs/data.yaml`을 기준으로 변경 가능  
 - Custom dataset에도 동일한 파이프라인 적용 가능  
-- 그림(`figures/pipeline.png`)을 README.md에 삽입 가능  
