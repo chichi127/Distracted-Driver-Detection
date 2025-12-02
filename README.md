@@ -1,6 +1,8 @@
 # Driver Distraction Detection  
 YOLO Detection + EfficientNet Classification Two-Stage Pipeline
+---
 
+![파이프라인](figures/pipeline.png)
 운전자의 주의 분산 행동(c0~c7)을 자동 탐지하기 위한 Two-Stage Deep Learning 파이프라인입니다.
 
 - **Stage 1 – YOLO (Detection)**  
