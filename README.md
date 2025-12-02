@@ -60,6 +60,8 @@ DriverDistractionDetection/
 
 ---
 
+---
+
 ## Usage Flow
 
 1. **데이터 라벨 통합 (c2/c3 → c2 통합)**  
@@ -80,6 +82,49 @@ DriverDistractionDetection/
 6. **YOLO + EfficientNet 통합 추론**  
    `fusion/run_fusion.py`
 
+---
+
+## End-to-End Pipeline (Example)
+
+아래는 한 번에 전체 파이프라인을 실행하는 예시입니다.  
+(경로와 옵션은 사용자의 데이터 구조에 맞게 수정해서 사용하세요.)
+
+```bash
+# 0) 의존성 설치
+pip install -r requirements.txt
+
+# 1) c2(폰 왼손) / c3(폰 오른손) 라벨을 하나의 c2 클래스로 통합
+python dataset_tools/merge_c2c3_labels.py \
+  --data-root data/driver
+
+# 2) train / val / test 분리 (필요 시)
+python dataset_tools/split_dataset.py \
+  --data-root data/driver \
+  --val-ratio 0.2 --test-ratio 0.1
+
+# 3) YOLO 탐지 모델 학습
+python yolo_detector/train_yolo.py \
+  --data-config configs/data.yaml \
+  --weights yolov8s.pt \
+  --epochs 50
+
+# 4) 학습된 YOLO bbox를 이용해 Crop 생성 (분류기 학습용)
+python dataset_tools/make_crops.py \
+  --data-root data/driver \
+  --yolo-weights runs_yolo/exp/weights/best.pt \
+  --out-dir data/driver/cls_crops
+
+# 5) EfficientNet 분류기 학습
+python classifier/train_clf.py \
+  --config configs/clf_config.json \
+  --data-root data/driver/cls_crops
+
+# 6) YOLO + EfficientNet 통합 추론 (test set)
+python fusion/run_fusion.py \
+  --data-root data/driver \
+  --yolo-weights runs_yolo/exp/weights/best.pt \
+  --clf-weights cls_runs/efficientnet_b3_best.pth \
+  --output-csv results/fusion_test_results.csv
 ---
 
 ## Notes
