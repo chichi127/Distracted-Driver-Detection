@@ -126,6 +126,7 @@ python fusion/run_fusion.py \
   --clf-weights cls_runs/efficientnet_b3_best.pth \
   --output-csv results/fusion_test_results.csv
 ---
+```
 
 ## Notes
 
