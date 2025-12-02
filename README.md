@@ -16,7 +16,7 @@ YOLO Detection + EfficientNet Classification Two-Stage Pipeline
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 DriverDistractionDetection/
@@ -60,7 +60,7 @@ DriverDistractionDetection/
 
 ---
 
-## 🚀 Usage Flow
+## Usage Flow
 
 1. **데이터 라벨 통합 (c2/c3 → c2 통합)**  
    `dataset_tools/merge_c2c3_labels.py`
@@ -82,15 +82,7 @@ DriverDistractionDetection/
 
 ---
 
-## 🔗 References
-
-- YOLO 기반 운전자 행동 탐지 연구  
-- EfficientNet 기반 인간 행동 분류 연구  
-- Detection → Classification Two-Stage 방법론
-
----
-
-## 📝 Notes
+## Notes
 
 - 모든 코드에서 데이터 경로는 `configs/data.yaml`을 기준으로 변경 가능  
 - Custom dataset에도 동일한 파이프라인 적용 가능  
