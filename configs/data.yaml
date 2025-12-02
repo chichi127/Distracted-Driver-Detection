@@ -1,1 +1,20 @@
+# configs/data.yaml
 
+# YOLO 데이터 루트는 코드에서 DATA_ROOT로 잡고, 여기서는 상대 경로만 씀
+# DATA_ROOT / ""  → data/driver (혹은 DDD_DATA_ROOT)
+
+path: .
+
+train: train/images
+val: valid/images
+
+nc: 8
+names:
+  0: c0_safe_driving
+  1: c1_texting
+  2: c2_phone_call   # 왼손/오른손 전화 통합
+  3: c3_unused       # 더 이상 안 씀 (남겨두고 안 써도 됨)
+  4: c4_adjust_radio
+  5: c5_reaching_behind
+  6: c6_hair_makeup
+  7: c7_talking_passenger
